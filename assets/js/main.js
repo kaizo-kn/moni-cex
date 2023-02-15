@@ -296,7 +296,7 @@ function buildOrderModal(content) {
 
 //Update User Online Status
 setInterval(() => {
-    const basepath = $("#basepath").val();
+    const basepath = $("#basepaths").val();
     if (basepath != undefined) {
         $.ajax({
             url: basepath + "index.php/user/ajax_set_user_last_active",

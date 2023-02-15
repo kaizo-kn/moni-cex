@@ -8,15 +8,16 @@
             </div>
     </span>
     <ul style="position:absolute;right:0px;margin-top:5px" class="ms-2">
-        <li><a href="<?php echo site_url('user/') ?>">Dashboard</a></li>
+        <li><a href="<?php echo site_url('admin/') ?>">Dashboard</a></li>
         <?php
         if ($this->session->userdata('is_login') == true && $this->session->userdata('id_pks') == '0') {
-            echo '<li><a href="'. site_url("user/ubah_info_stok").'">Ubah Info Stok Sparepart</a></li>
-            <li><a href="'. site_url("user/ubah_info_harga").'">Ubah Info Harga</a></li>
-            <li><a href="'. site_url("user/manajemen_review").'">Manajemen Review</a></li>
-            <li><a href="'. site_url("user/manajemen_pesanan").'">Manajemen Pesanan</a></li>
-            <li><a href="'. site_url("user/reset_user").'">Reset Password User</a></li>
-            <li><a href="'. site_url("user/register").'">Tambah User</a></li>';
+            echo '<li><a href="'. site_url("admin/lap_invest").'">Progress Lap. Investasi</a></li>
+            <li><a href="'. site_url("admin/input_pekerjaan").'">Input Uraian Pekerjaan</a></li>
+            <li><a href="'. site_url("admin/update_progress").'">Update Progress</a></li>
+            <li><a href="'. site_url("admin/upload_dokumen").'">Upload Dokumen</a></li>
+            <li><a href="'. site_url("admin/pengawasan_pekerjaan_lap").'">Pengawasan Pekerjaan Lap.</a></li>
+            <li><a href="'. site_url("admin/reset_password").'">Reset Password User</a></li>
+            <li><a href="'. site_url("admin/register").'">Tambah User</a></li>';
         }else{
             echo '<li><a href="'. site_url("user/pemesanan_produk").'">Buat Pesanan</a></li>
             <li><a href="'. site_url("user/daftar_pesanan").'">Pesanan Saya</a></li>

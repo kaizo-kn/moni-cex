@@ -15,23 +15,82 @@ class Admin extends CI_Controller
 
    public function index()
    {
-     if ($this->session->userdata('is_login') == TRUE && $this->session->userdata('id_pks') == '0') {
-      $this->load->view('__partials/header.php', array('page_title' => 'Dashboard'));
-      $this->load->view('__partials/menu.php', array('m2' => 'nav-menu-active'));
-      $this->load->view('admin/dashboard.php');
-      $this->load->view('__partials/footer.php');
-     } else {
-      redirect('login', 'refresh');
-     }
+      if ($this->session->userdata('is_login') == TRUE && $this->session->userdata('id_pks') == '0') {
+         $data = array('progress_0' => 3, 'progress_40' => 3, 'progress_60' => 3, 'progress_99' => 3, 'progress_100' => 3, 'progress_pks' => 3, 'progress_tekpol' => 3, 'progress_hps' => 3, 'progress_pengadaan' => 3, 'keluar_sppbj' => 3);
+         $total = 0;
+         foreach ($data as $key => $value) {
+            $total += $value;
+         }
+         $this->load->view('__partials/header.php', array('page_title' => 'Dashboard'));
+         $this->load->view('__partials/menu.php', array('m1' => 'nav-menu-active'));
+         $this->load->view('admin/dashboard.php', array_merge($data, array('total_pekerjaan' => $total)));
+         $this->load->view('__partials/footer.php');
+      } else {
+         redirect('login', 'refresh');
+      }
    }
-   public function info_produk()
+   public function lap_invest()
    {
-      $this->load->view('main/header.php', array('page_title' => 'Informasi Produk PMT'));
-      $this->load->view('main/menu.php', array('m2' => 'nav-menu-active'));
-      $this->load->view('main/info_produk.php');
-      $this->load->view('main/footer.php');
-      if ($this->session->userdata('is_login') == true) {
-         $this->session->set_userdata(array('sitenow' => 'home/info_produk'));
+      if ($this->session->userdata('is_login') == TRUE && $this->session->userdata('id_pks') == '0') {
+         $data = array('progress_0' => 3, 'progress_40' => 3, 'progress_60' => 3, 'progress_99' => 3, 'progress_100' => 3, 'progress_pks' => 3, 'progress_tekpol' => 3, 'progress_hps' => 3, 'progress_pengadaan' => 3, 'keluar_sppbj' => 3);
+         $total = 0;
+         foreach ($data as $key => $value) {
+            $total += $value;
+         }
+         $this->load->view('__partials/header.php', array('page_title' => 'Progress Lap. Investasi'));
+         $this->load->view('__partials/menu.php', array('m2' => 'nav-menu-active'));
+         $this->load->view('admin/lap_invest', array_merge($data, array('total_pekerjaan' => $total)));
+         $this->load->view('__partials/footer.php');
+      } else {
+         redirect('login', 'refresh');
+      }
+   }
+   public function input_pekerjaan()
+   {
+      if ($this->session->userdata('is_login') == TRUE && $this->session->userdata('id_pks') == '0') {
+         $data = $this->db->query('SELECT id_pks,nama_pks from daftar_nama_pks where id_pks > 0 order by nama_pks asc')->result_array();
+         $this->load->view('__partials/header.php', array('page_title' => 'Progress Lap. Investasi'));
+         $this->load->view('__partials/menu.php', array('m2' => 'nav-menu-active'));
+         $this->load->view('admin/input_uraian_pekerjaan.php', array('data_pks' => $data));
+         $this->load->view('__partials/footer.php');
+      } else {
+         redirect('login', 'refresh');
+      }
+   }
+   public function update_progress()
+   {
+      if ($this->session->userdata('is_login') == TRUE && $this->session->userdata('id_pks') == '0') {
+         $data = $this->db->query('SELECT id_pks,nama_pks from daftar_nama_pks where id_pks > 0 order by nama_pks asc')->result_array();
+         $this->load->view('__partials/header.php', array('page_title' => 'Progress Lap. Investasi'));
+         $this->load->view('__partials/menu.php', array('m2' => 'nav-menu-active'));
+         $this->load->view('admin/update_progress.php', array('data_pks' => $data,'data_pekerjaan'=>$data));
+         $this->load->view('__partials/footer.php');
+      } else {
+         redirect('login', 'refresh');
+      }
+   }
+   public function upload_dokumen()
+   {
+      if ($this->session->userdata('is_login') == TRUE && $this->session->userdata('id_pks') == '0') {
+         $data = $this->db->query('SELECT id_pks,nama_pks from daftar_nama_pks where id_pks > 0 order by nama_pks asc')->result_array();
+         $this->load->view('__partials/header.php', array('page_title' => 'Progress Lap. Investasi'));
+         $this->load->view('__partials/menu.php', array('m2' => 'nav-menu-active'));
+         $this->load->view('admin/upload_dokumen.php', array('data_pks' => $data,'data_pekerjaan'=>$data));
+         $this->load->view('__partials/footer.php');
+      } else {
+         redirect('login', 'refresh');
+      }
+   }
+   public function pengawasan_pekerjaan_lap()
+   {
+      if ($this->session->userdata('is_login') == TRUE && $this->session->userdata('id_pks') == '0') {
+         $data = $this->db->query('SELECT id_pks,nama_pks from daftar_nama_pks where id_pks > 0 order by nama_pks asc')->result_array();
+         $this->load->view('__partials/header.php', array('page_title' => 'Progress Lap. Investasi'));
+         $this->load->view('__partials/menu.php', array('m3' => 'nav-menu-active'));
+         $this->load->view('admin/pengawasan_pekerjaan_lap.php', array('data_pks' => $data,'data_pekerjaan'=>$data));
+         $this->load->view('__partials/footer.php');
+      } else {
+         redirect('login', 'refresh');
       }
    }
    public function info_harga()
@@ -47,14 +106,13 @@ class Admin extends CI_Controller
    }
    public function info_stok()
    {
-      
+
 
       $info_stok = $this->m_home->m_get_stok();
       $this->load->view('main/header.php', array('page_title' => 'Informasi Stok Produk PMT'));
       $this->load->view('main/menu.php', array('m4' => 'nav-menu-active'));
-      $this->load->view('main/info_stok.php',$info_stok);
+      $this->load->view('main/info_stok.php', $info_stok);
       $this->load->view('main/footer.php');
-      
    }
 
 
@@ -74,17 +132,18 @@ class Admin extends CI_Controller
       $data_review = $this->m_home->m_get_data_review();
       $this->load->view('main/header.php', array('page_title' => 'Halaman Review Produk'));
       $this->load->view('main/menu.php', array('m6' => 'nav-menu-active'));
-      $this->load->view('main/review.php',array('data_review' => $data_review));
+      $this->load->view('main/review.php', array('data_review' => $data_review));
       $this->load->view('main/footer.php');
       if ($this->session->userdata('is_login') == true) {
          $this->session->set_userdata(array('sitenow' => 'home/review'));
       }
    }
 
-public function get_json_data(){
+   public function get_json_data()
+   {
       $id_pesanan = $this->input->post('id_pesanan');
       echo $this->m_home->m_get_json_data($id_pesanan);
-}  
+   }
 
    //Rmdir
    function deleteDirectory($dir)
@@ -169,12 +228,12 @@ public function get_json_data(){
       $this->session->set_flashdata('message', '');
    }
 
-   
+
 
    //Upload File
    public function ubah_info_harga()
    {
-      if ($this->session->userdata('is_login') == FALSE||$this->session->userdata('id_pks')!="0") {
+      if ($this->session->userdata('is_login') == FALSE || $this->session->userdata('id_pks') != "0") {
          redirect('user/', 'refresh');
       } else {
          $title['page_title'] = "Ubah Informasi Harga";
@@ -194,7 +253,7 @@ public function get_json_data(){
          '@<script[^>]*?>.*?</script>@si', // Menghapus script tag
          '@<[ /!]*?[^<>]*?>@si', // Menghapus tag HTML
          '@<style[^>]*?>.*?</style>@siU', // Menghapus style tag
-         '/`/',"/'/",'/"/'
+         '/`/', "/'/", '/"/'
       );
       $output = preg_replace($search, '', $input);
       $output = htmlspecialchars($output, ENT_QUOTES, 'UTF-8');

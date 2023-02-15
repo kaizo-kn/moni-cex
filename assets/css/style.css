@@ -8,6 +8,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+    scroll-behavior: smooth;
 }
 
 a {
@@ -26,7 +27,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Jost", sans-serif;
+    font-family: "Barlow Condensed", sans-serif;
 }
 
 
@@ -448,7 +449,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-    font-family: "Jost", sans-serif;
+    font-family: "Barlow Condensed", sans-serif;
     font-weight: 500;
     font-size: 16px;
     letter-spacing: 1px;
@@ -783,7 +784,7 @@ section {
 }
 
 .cta .cta-btn {
-    font-family: "Jost", sans-serif;
+    font-family: "Barlow Condensed", sans-serif;
     font-weight: 500;
     font-size: 16px;
     letter-spacing: 1px;
@@ -1019,14 +1020,6 @@ section {
     padding-right: 3px;
 }
 
-.team .member:hover {
-    box-shadow: #2dffb96b 0px 5px 15px;
-}
-
-.team .member:not(.no-hover):hover img {
-    transform: scale(1.2);
-}
-
 .team .member .member-info {
     padding-left: 30px;
 }
@@ -1095,7 +1088,7 @@ section {
     font-size: 48px;
     color: var(--main-color-blue);
     font-weight: 400;
-    font-family: "Jost", sans-serif;
+    font-family: "Barlow Condensed", sans-serif;
     margin-bottom: 25px;
 }
 
@@ -1150,7 +1143,7 @@ section {
     transition: none;
     font-size: 16px;
     font-weight: 500;
-    font-family: "Jost", sans-serif;
+    font-family: "Barlow Condensed", sans-serif;
     transition: 0.3s;
     border: 1px solid #47b2e4;
 }
@@ -1610,7 +1603,7 @@ section {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 0;
-    font-family: "Jost", sans-serif;
+    font-family: "Barlow Condensed", sans-serif;
     color: #5e5e5e;
 }
 
@@ -1897,7 +1890,7 @@ section {
     box-shadow: initial !important;
 }
 
-.main-text-color {
+.text-main {
     color: var(--main-bg-color) !important;
 }
 
@@ -2002,4 +1995,43 @@ section {
 
 .btm-border.fromLeft:after {
     transform-origin: 0% 50%;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-95 {
+    width: 95%;
+}
+
+.text-orange {
+    color: var(--bs-orange)!important;
+}
+
+.b-scroll::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.b-scroll::-webkit-scrollbar:vertical {
+    width: 30px;
+}
+
+.b-scroll::-webkit-scrollbar:horizontal {
+    height: 8px;
+}
+
+.b-scroll::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: white;
+}
+
+.b-scroll::-webkit-scrollbar-track {
+    border: none;
+    background-color: transparent;
+    border-radius: 8px;
 }
